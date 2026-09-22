@@ -46,10 +46,5 @@ ITUIChoice >> widgetFor: aBackend [
 
 { #category : 'running' }
 ITUIChoice >> run [
-	UIManager default
-		chooseFrom: (displayBlock value: items)
-		values: items
-		lines: #()
-		message: message
-		title: title
+	^ (self backend widgetFor: self) openModal
 ]

@@ -45,6 +45,18 @@ ITInformation >> type [
 	^ type
 ]
 
+{ #category : 'action' }
+ITInformation >> inform [
+
+	^ (self backend widgetFor: self) openModal
+]
+
+{ #category : 'action' }
+ITInformation >> show [
+
+	^ self inform
+]
+
 { #category : 'private' }
 ITInformation >> widgetFor: aBackend [
 

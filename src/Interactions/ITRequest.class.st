@@ -56,18 +56,16 @@ ITRequest >> multiLineRequest [
 
 { #category : 'action' }
 ITRequest >> request [
-	| answer |
-	[ answer := UIManager default
-		request: message
-		initialAnswer: initialAnswer ]
-		doWhileTrue: [ answer isNotNil and: [ self isValid: answer ] ].
-	"answer is nil when the user press cancels. That's a possible answer we have to accept."
-	^ answer
+	^ (self backend widgetFor: self) openModal
 ]
 
 { #category : 'action' }
 ITRequest >> requestPassword [
-	UIManager default requestPassword: message
+	| dialog |
+
+	dialog := self backend widgetFor: self.
+	dialog bePassword.
+	^ dialog openModal
 ]
 
 { #category : 'action' }

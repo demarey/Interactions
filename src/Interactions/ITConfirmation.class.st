@@ -42,17 +42,12 @@ ITConfirmation >> cancelLabel: aString [
 
 { #category : 'action' }
 ITConfirmation >> confirm [
-	^ UIManager default
-		confirm: message
-		trueChoice: self yesLabel
-		falseChoice: self noLabel
-		cancelChoice: self cancelLabel
-		default: self defaultChoice
+	^ (self backend widgetFor: self) openModal
 ]
 
 { #category : 'action' }
 ITConfirmation >> confirmWithCancelBlock [
-	^ UIManager default confirm: message orCancel: cancelBlock
+	^ (self backend widgetFor: self) openModal
 ]
 
 { #category : 'accessing' }
@@ -80,17 +75,17 @@ ITConfirmation >> noLabel: aString [
 
 { #category : 'action' }
 ITConfirmation >> proceed [
-	^ UIManager default proceed: message title: title
+	^ (self backend widgetFor: self) openModal
 ]
 
 { #category : 'action' }
 ITConfirmation >> question [
-	^ UIManager default question: message title: title
+	^ (self backend widgetFor: self) openModal
 ]
 
 { #category : 'action' }
 ITConfirmation >> questionWithoutCancel [
-	^ UIManager default questionWithoutCancel: message title: title
+	^ (self backend widgetFor: self) openModal
 ]
 
 { #category : 'private' }
