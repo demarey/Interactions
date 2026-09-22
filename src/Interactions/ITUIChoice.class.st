@@ -14,6 +14,11 @@ Class {
 }
 
 { #category : 'accessing' }
+ITUIChoice >> displayBlock [
+	^ displayBlock
+]
+
+{ #category : 'accessing' }
 ITUIChoice >> displayBlock: aBlock [ 
 	displayBlock := aBlock 
 ]
@@ -24,8 +29,19 @@ ITUIChoice >> initialize [
 ]
 
 { #category : 'accessing' }
+ITUIChoice >> items [
+	^ items
+]
+
+{ #category : 'accessing' }
 ITUIChoice >> items: aCollection [
 	items := aCollection
+]
+
+{ #category : 'private' }
+ITUIChoice >> widgetFor: aBackend [
+
+	^ aBackend widgetForUIChoice: self
 ]
 
 { #category : 'running' }

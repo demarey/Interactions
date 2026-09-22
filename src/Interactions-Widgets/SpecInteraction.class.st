@@ -52,3 +52,15 @@ SpecInteraction >> widgetForInformation: anITInformation [
 
 	^ SpInformDialog for: anITInformation
 ]
+
+{ #category : 'accessing' }
+SpecInteraction >> widgetForRequest: aRequest [
+
+	^ SpRequestDialog for: aRequest
+]
+
+{ #category : 'accessing' }
+SpecInteraction >> widgetForUIChoice: aUIChoice [
+
+	^ SpSelectDialog for: aUIChoice
+]

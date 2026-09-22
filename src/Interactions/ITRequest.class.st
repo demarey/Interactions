@@ -26,6 +26,11 @@ ITRequest >> entryCompletion: anEntryCompletion [
 ]
 
 { #category : 'accessing' }
+ITRequest >> initialAnswer [
+	^ initialAnswer
+]
+
+{ #category : 'accessing' }
 ITRequest >> initialAnswer: aString [
 	initialAnswer := aString
 ]
@@ -34,6 +39,12 @@ ITRequest >> initialAnswer: aString [
 ITRequest >> isValid: answer [
 	^ validationBlock isNil 
 		or: [ (validationBlock value: answer) not ]
+]
+
+{ #category : 'private' }
+ITRequest >> widgetFor: aBackend [
+
+	^ aBackend widgetForRequest: self
 ]
 
 { #category : 'action' }
@@ -65,6 +76,11 @@ ITRequest >> requestWithEntryCompletion [
 		request: message
 		initialAnswer: initialAnswer
 		entryCompletion: entryCompletion
+]
+
+{ #category : 'accessing' }
+ITRequest >> validationBlock [
+	^ validationBlock
 ]
 
 { #category : 'accessing' }

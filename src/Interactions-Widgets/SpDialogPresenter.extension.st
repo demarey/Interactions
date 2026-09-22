@@ -4,3 +4,10 @@ Extension { #name : 'SpDialogPresenter' }
 SpDialogPresenter >> doInteraction [
 	^ self openDialog
 ]
+
+Extension { #name : 'SpStandardDialogPresenter' }
+
+{ #category : '*Interactions-Widgets' }
+SpStandardDialogPresenter >> doInteraction [
+	^ self openDialog
+]
