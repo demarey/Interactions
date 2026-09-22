@@ -7,6 +7,6 @@ SpSelectDialog class >> for: aUIChoice [
 		title: aUIChoice title;
 		label: aUIChoice message;
 		items: aUIChoice items;
-		display: [ :item | (aUIChoice displayBlock value: (Array with: item)) first ];
+		display: [ :item | aUIChoice displayBlock value: item ];
 		yourself
 ]

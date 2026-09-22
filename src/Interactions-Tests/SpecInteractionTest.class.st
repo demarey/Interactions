@@ -147,7 +147,7 @@ SpecInteractionTest >> testCanOpenAUIChoice [
 		title: 'Select a template';
 		message: 'Which template do you want?';
 		items: #( foo bar );
-		displayBlock: [ :values | values collect: [ :value | value asString ] ];
+		displayBlock: [ :value | value asString ];
 		yourself.
 
 	widget := backend widgetFor: choice.
