@@ -59,6 +59,45 @@ SpecInteractionTest >> testCanOpenAFileRequest [
 ]
 
 { #category : 'tests' }
+SpecInteractionTest >> testCanOpenARequest [
+
+	| request window |
+	request := ITRequest new
+		title: 'Image name';
+		message: 'Please enter a name:';
+		initialAnswer: 'MyImage';
+		validationBlock: [ :text | text isNotNil and: [ text trimBoth isNotEmpty ] ];
+		yourself.
+
+	widget := backend widgetFor: request.
+	widget doInteraction.
+
+	window := widget window.
+	self assert: window title equals: request title.
+	self assert: widget label equals: request message.
+	self assert: widget textInputPresenter text equals: request initialAnswer
+]
+
+{ #category : 'tests' }
+SpecInteractionTest >> testCanOpenAUIChoice [
+
+	| choice window |
+	choice := ITUIChoice new
+		title: 'Select a template';
+		message: 'Which template do you want?';
+		items: #( foo bar );
+		displayBlock: [ :value | value asString ];
+		yourself.
+
+	widget := backend widgetFor: choice.
+	widget doInteraction.
+
+	window := widget window.
+	self assert: window title equals: choice title.
+	self assert: widget getLabel equals: choice message
+]
+
+{ #category : 'tests' }
 SpecInteractionTest >> testCanOpenAnInformation [
 
 	| inform window |
@@ -117,43 +156,4 @@ SpecInteractionTest >> testCanSelectAFolder [
 	
 	self assert: widget fileNavigationSystem currentDirectory equals: fs root.
 	self assert: folder equals: bFolder
-]
-
-{ #category : 'tests' }
-SpecInteractionTest >> testCanOpenARequest [
-
-	| request window |
-	request := ITRequest new
-		title: 'Image name';
-		message: 'Please enter a name:';
-		initialAnswer: 'MyImage';
-		validationBlock: [ :text | text isNotNil and: [ text trimBoth isNotEmpty ] ];
-		yourself.
-
-	widget := backend widgetFor: request.
-	widget doInteraction.
-
-	window := widget window.
-	self assert: window title equals: request title.
-	self assert: widget label equals: request message.
-	self assert: widget textInputPresenter text equals: request initialAnswer
-]
-
-{ #category : 'tests' }
-SpecInteractionTest >> testCanOpenAUIChoice [
-
-	| choice window |
-	choice := ITUIChoice new
-		title: 'Select a template';
-		message: 'Which template do you want?';
-		items: #( foo bar );
-		displayBlock: [ :value | value asString ];
-		yourself.
-
-	widget := backend widgetFor: choice.
-	widget doInteraction.
-
-	window := widget window.
-	self assert: window title equals: choice title.
-	self assert: widget label equals: choice message
 ]

@@ -41,12 +41,6 @@ ITRequest >> isValid: answer [
 		or: [ (validationBlock value: answer) not ]
 ]
 
-{ #category : 'private' }
-ITRequest >> widgetFor: aBackend [
-
-	^ aBackend widgetForRequest: self
-]
-
 { #category : 'action' }
 ITRequest >> multiLineRequest [
 	^ UIManager default multiLineRequest: message 
@@ -84,4 +78,10 @@ ITRequest >> validationBlock [
 { #category : 'accessing' }
 ITRequest >> validationBlock: aBlock [
 	validationBlock := aBlock
+]
+
+{ #category : 'private' }
+ITRequest >> widgetFor: aBackend [
+
+	^ aBackend widgetForRequest: self
 ]

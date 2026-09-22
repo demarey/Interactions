@@ -40,11 +40,6 @@ ITInformation >> beAlert [
 	title ifNil: [ title := 'Alert!' translated ]
 ]
 
-{ #category : 'accessing' }
-ITInformation >> type [ 
-	^ type
-]
-
 { #category : 'action' }
 ITInformation >> inform [
 
@@ -55,6 +50,11 @@ ITInformation >> inform [
 ITInformation >> show [
 
 	^ self inform
+]
+
+{ #category : 'accessing' }
+ITInformation >> type [ 
+	^ type
 ]
 
 { #category : 'private' }

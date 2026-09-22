@@ -25,7 +25,7 @@ ITUIChoice >> displayBlock: aBlock [
 
 { #category : 'initialization' }
 ITUIChoice >> initialize [ 
-	displayBlock := [ :item | item name ]
+	displayBlock := [ :item | item ]
 ]
 
 { #category : 'accessing' }
@@ -38,13 +38,13 @@ ITUIChoice >> items: aCollection [
 	items := aCollection
 ]
 
+{ #category : 'running' }
+ITUIChoice >> run [
+	^ (self backend widgetFor: self) openModal
+]
+
 { #category : 'private' }
 ITUIChoice >> widgetFor: aBackend [
 
 	^ aBackend widgetForUIChoice: self
-]
-
-{ #category : 'running' }
-ITUIChoice >> run [
-	^ (self backend widgetFor: self) openModal
 ]
